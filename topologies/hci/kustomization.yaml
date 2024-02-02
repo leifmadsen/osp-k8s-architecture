@@ -17,8 +17,8 @@ transformers:
     create: true
 
 components:
-- ../../lib/networking
-- ../../lib/control-plane
+- ../../components/networking
+- ../../components/control-plane
 
 # Add StorageMgmt network template, as it is needed for CephHCI
 patches:

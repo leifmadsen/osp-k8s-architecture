@@ -17,8 +17,8 @@ transformers:
     create: true
 
 components:
-- ../../../lib/networking
-- ../../../lib/control-plane
+- ../../components/networking
+- ../../components/control-plane
 
 replacements:
 # Neutron control plane SRIOV customization
