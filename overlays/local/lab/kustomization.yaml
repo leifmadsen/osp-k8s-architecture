@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+transformers:
+# Set namespace to OpenStack on all namespaced objects without a namespace
+- |-
+  apiVersion: builtin
+  kind: NamespaceTransformer
+  metadata:
+    name: _ignored_
+    namespace: openstack
+  setRoleBindingSubjects: none
+  unsetOnly: true
+  fieldSpecs:
+  - path: metadata/name
+    kind: Namespace
+    create: true
+
+components:
+  #- ../../../components/networking
+- ../../../components/control-plane
+
+#replacements:
+## NetConfig dnsDomain specific to this VA
+#- source:
+#    kind: ConfigMap
+#    name: network-values
+#    fieldPath: data.storagemgmt.dnsDomain
+#  targets:
+#  - select:
+#      kind: NetConfig
+#    fieldPaths:
+#    - spec.networks.[name=StorageMgmt].dnsDomain
+## NetConfig MTU specific to this VA
+#- source:
+#    kind: ConfigMap
+#    name: network-values
+#    fieldPath: data.storagemgmt.mtu
+#  targets:
+#  - select:
+#      kind: NetConfig
+#    fieldPaths:
+#    - spec.networks.[name=StorageMgmt].mtu
+## NetConfig subnets specific to this VA
+#- source:
+#    kind: ConfigMap
+#    name: network-values
+#    fieldPath: data.storagemgmt.subnets
+#  targets:
+#  - select:
+#      kind: NetConfig
+#    fieldPaths:
+#    - spec.networks.[name=StorageMgmt].subnets
+
+resources:
+  - nncp/values.yaml
