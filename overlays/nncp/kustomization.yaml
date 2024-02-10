@@ -17,8 +17,24 @@ transformers:
     create: true
 
 components:
-  - ../../../../../components/nncp
+  - ../../components/nncp
 
-resources:
-  - values.yaml
+patches:
+  - target:
+      kind: NodeNetworkConfigurationPolicy
+      name: node-0
+    path: patch.yaml
+  - target:
+      kind: NodeNetworkConfigurationPolicy
+      name: node-1
+    path: patch.yaml
+  - target:
+      kind: NodeNetworkConfigurationPolicy
+      name: node-2
+    path: patch.yaml
+
+    #resources:
+    #  - values.yaml
+    #
+
 

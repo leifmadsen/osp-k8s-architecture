@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../nncp
+
+patches:
+  - target:
+      kind: NodeNetworkConfigurationPolicy
+      name: node-0
+    patch: |-
+      - op: replace
+        path: /spec/desiredState/dns-resolver/config/server/0
+        value: 192.168.122.200
+
+
