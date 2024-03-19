@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: notImportantHere
+annotations:
+  argocd.argoproj.io/managed-by: openshift-gitops
+fieldSpecs:
+- kind: Namespace
+  path: metadata/annotations
+  create: true
