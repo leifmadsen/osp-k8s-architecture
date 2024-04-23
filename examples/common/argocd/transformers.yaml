@@ -1,10 +1,10 @@
 apiVersion: builtin
-kind: AnnotationsTransformer
+kind: LabelTransformer
 metadata:
   name: notImportantHere
-annotations:
+labels:
   argocd.argoproj.io/managed-by: openshift-gitops
 fieldSpecs:
 - kind: Namespace
-  path: metadata/annotations
+  path: metadata/labels
   create: true
