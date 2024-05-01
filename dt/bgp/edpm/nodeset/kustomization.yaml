@@ -18,7 +18,4 @@ transformers:
         create: true
 
 components:
-  - ../../../lib/dataplane
-
-resources:
-  - nova_custom.yaml
+  - ../../../../lib/dataplane/nodeset
