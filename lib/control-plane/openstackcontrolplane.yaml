@@ -33,11 +33,11 @@ spec:
       openstack:
         replicas: 3
         secret: osp-secret
-        storageRequest: 500M
+        storageRequest: 10G
       openstack-cell1:
         replicas: 3
         secret: osp-secret
-        storageRequest: 500M
+        storageRequest: 10G
   glance:
     apiOverrides:
       default:
